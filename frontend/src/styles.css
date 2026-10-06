@@ -1,0 +1,22 @@
+body{margin:0;font:14px system-ui,sans-serif;background:#f6f6f4;color:#222}
+header{display:flex;gap:8px;align-items:center;padding:10px 16px;background:#fff;border-bottom:1px solid #ddd}
+header input{flex:1;padding:8px 10px;border:1px solid #ccc;border-radius:8px}
+button,select{padding:7px 12px;border:1px solid #bbb;border-radius:8px;background:#fff;cursor:pointer}
+.err{margin:8px 16px;padding:8px 12px;background:#fcebeb;color:#a32d2d;border-radius:8px}
+.stats{display:flex;gap:16px;padding:8px 16px;color:#555}
+main{display:grid;grid-template-columns:1fr 320px;gap:12px;padding:0 16px 16px}
+.graph{width:100%;background:#fff;border:1px solid #ddd;border-radius:10px;color:#333}
+.legend{margin-top:6px;color:#555}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 4px 0 12px}
+.legend .ring{background:#fff;border:2.5px solid #E24B4A;box-sizing:border-box}
+aside{display:flex;flex-direction:column;gap:10px}
+.card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px 12px}
+.card h4{margin:0 0 6px}.card h5{margin:8px 0 2px;color:#555;text-transform:capitalize}.card p{margin:2px 0;word-break:break-word}
+.row{display:flex;justify-content:space-between;padding:2px 0}.row span{color:#666;text-transform:capitalize}.row b{word-break:break-all;text-align:right;margin-left:8px}
+textarea{width:100%;box-sizing:border-box;margin-bottom:6px;border:1px solid #ccc;border-radius:8px;padding:6px}
+.link{cursor:pointer;display:flex;justify-content:space-between}.link:hover{color:#378ADD}
+@media(max-width:800px){main{grid-template-columns:1fr}}
+.time{display:flex;gap:10px;align-items:center;margin-top:8px}.time input{flex:1}.time span{color:#555;min-width:150px;font-size:12px}
+.card a{color:#185fa5;text-decoration:none}.card small{color:#666}aside{max-height:calc(100vh - 140px);overflow:auto}header{flex-wrap:wrap}
+.lvl.High{color:#E24B4A}.lvl.Medium{color:#BA7517}.lvl.Low{color:#1d9e75}.card summary{cursor:pointer}.link small{color:#666}
+.bar{display:flex;gap:10px;align-items:center;padding:6px 16px;flex-wrap:wrap}.bar select{max-width:520px}.muted{color:#777;font-size:12px}
+.legend .ring.o{border-color:#EF9F27}

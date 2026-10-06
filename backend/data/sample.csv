@@ -1,0 +1,171 @@
+id,author,parent_id,root_id,body,created_utc
+c1,user_alpha,t3_rt1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700000195
+c2,user_epsilon,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700000499
+c3,user_delta,t1_c2,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700000638
+c4,user_beta,t1_c1,t3_rt1,Shocking truth the media will never tell you,1700000714
+c5,user_sigma,t1_c1,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700000858
+c6,user_tau,t1_c2,t3_rt1,"Thanks for sharing, I will look into it",1700000913
+c7,user_theta,t1_c2,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700001016
+c8,user_sigma,t1_c3,t3_rt1,"Leaked proof the outbreak was planned, spread this now",1700001395
+c9,user_zeta,t1_c3,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700001615
+c10,user_delta,t1_c3,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700001961
+c11,user_eta,t1_c2,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700002151
+c12,user_omicron,t1_c2,t3_rt1,Shocking truth the media will never tell you,1700002308
+c13,user_zeta,t1_c1,t3_rt1,The city announced the schedule on Tuesday,1700002491
+c14,user_rho,t1_c7,t3_rt1,"Leaked proof the outbreak was planned, spread this now",1700002668
+c15,user_upsilon,t1_c3,t3_rt1,"Interesting, do you have a link to the study?",1700002782
+c16,user_lambda,t1_c3,t3_rt1,Shocking truth the media will never tell you,1700003154
+c17,user_gamma,t1_c11,t3_rt1,"Thanks for sharing, I will look into it",1700003344
+c18,user_lambda,t1_c3,t3_rt1,"Thanks for sharing, I will look into it",1700003607
+c19,user_gamma,t1_c3,t3_rt1,I read the report and the numbers look different,1700003977
+c20,user_gamma,t1_c9,t3_rt1,"Leaked proof the outbreak was planned, spread this now",1700004355
+c21,user_omicron,t1_c17,t3_rt1,Shocking truth the media will never tell you,1700004562
+c22,user_alpha,t1_c2,t3_rt1,I read the report and the numbers look different,1700004651
+c23,user_pi,t1_c1,t3_rt1,"Leaked proof the outbreak was planned, spread this now",1700004807
+c24,user_nu,t1_c1,t3_rt1,Shocking truth the media will never tell you,1700005066
+c25,user_nu,t1_c18,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700005377
+c26,user_iota,t1_c14,t3_rt1,I read the report and the numbers look different,1700005601
+c27,user_theta,t1_c2,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700005968
+c28,user_theta,t1_c2,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700006142
+c29,user_alpha,t1_c3,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700006461
+c30,user_lambda,t1_c27,t3_rt1,"Thanks for sharing, I will look into it",1700006826
+c31,user_beta,t1_c5,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700007060
+c32,user_nu,t1_c1,t3_rt1,Shocking truth the media will never tell you,1700007124
+c33,user_eta,t1_c3,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700007180
+c34,user_delta,t1_c13,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700007396
+c35,user_upsilon,t1_c17,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700007502
+c36,user_iota,t1_c6,t3_rt1,"Thanks for sharing, I will look into it",1700007594
+c37,user_delta,t1_c12,t3_rt1,Health officials recommend checking the official guidance,1700007783
+c38,user_gamma,t1_c25,t3_rt1,"Leaked proof the outbreak was planned, spread this now",1700008058
+c39,user_zeta,t1_c36,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700008358
+c40,user_mu,t1_c35,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700008658
+c41,user_kappa,t1_c25,t3_rt1,"Interesting, do you have a link to the study?",1700008821
+c42,user_rho,t1_c7,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700008965
+c43,user_sigma,t1_c6,t3_rt1,"100% proven this drink cures everything, doctors hate it",1700009109
+c44,user_upsilon,t1_c33,t3_rt1,The city announced the schedule on Tuesday,1700009344
+c45,user_theta,t1_c8,t3_rt1,Shocking truth the media will never tell you,1700009388
+c46,user_alpha,t1_c3,t3_rt1,Health officials recommend checking the official guidance,1700009772
+c47,user_upsilon,t1_c35,t3_rt1,Health officials recommend checking the official guidance,1700010172
+c48,user_mu,t1_c1,t3_rt1,I read the report and the numbers look different,1700010254
+c49,user_theta,t1_c3,t3_rt1,"Leaked proof the outbreak was planned, spread this now",1700010603
+c50,user_upsilon,t1_c44,t3_rt1,Health officials recommend checking the official guidance,1700010809
+c51,user_gamma,t1_c45,t3_rt1,"Interesting, do you have a link to the study?",1700011203
+c52,user_eta,t1_c16,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700011558
+c53,user_lambda,t1_c18,t3_rt1,Shocking truth the media will never tell you,1700011631
+c54,user_zeta,t1_c1,t3_rt1,"They don't want you to know the water is poisoned, wake up",1700011963
+c55,user_omicron,t1_c29,t3_rt1,The city announced the schedule on Tuesday,1700012298
+c56,user_pi,t1_c3,t3_rt1,I read the report and the numbers look different,1700012608
+c57,user_epsilon,t1_c24,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700012709
+c58,user_xi,t1_c46,t3_rt1,The city announced the schedule on Tuesday,1700012847
+c59,user_alpha,t1_c24,t3_rt1,"Leaked proof the outbreak was planned, spread this now",1700013177
+c60,user_lambda,t1_c48,t3_rt1,Shocking truth the media will never tell you,1700013238
+c61,user_mu,t1_c47,t3_rt1,"Thanks for sharing, I will look into it",1700013532
+c62,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013537
+c63,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013543
+c64,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013546
+c65,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013552
+c66,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013555
+c67,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013561
+c68,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013567
+c69,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013569
+c70,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013574
+c71,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013577
+c72,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013583
+c73,acct_9921,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013585
+c74,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013588
+c75,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013591
+c76,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013594
+c77,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013599
+c78,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013605
+c79,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013607
+c80,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013613
+c81,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013615
+c82,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013619
+c83,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013625
+c84,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013631
+c85,acct_4410,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013637
+c86,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013642
+c87,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013644
+c88,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013650
+c89,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013652
+c90,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013655
+c91,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013658
+c92,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013662
+c93,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013664
+c94,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013666
+c95,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013672
+c96,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013677
+c97,acct_7305,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013683
+c98,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013685
+c99,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013687
+c100,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013692
+c101,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013696
+c102,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013702
+c103,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013708
+c104,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013714
+c105,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013720
+c106,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013723
+c107,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013727
+c108,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013732
+c109,acct_1188,t1_c1,t3_rt1,"BREAKING the cure is being hidden from you, share before it gets deleted",1700013738
+c110,user_alpha,t3_rt2,t3_rt2,The city announced the schedule on Tuesday,1700014041
+c111,user_pi,t1_c110,t3_rt2,"Thanks for sharing, I will look into it",1700014428
+c112,user_rho,t1_c111,t3_rt2,I read the report and the numbers look different,1700014561
+c113,user_omicron,t1_c111,t3_rt2,The city announced the schedule on Tuesday,1700014791
+c114,user_omicron,t1_c110,t3_rt2,I read the report and the numbers look different,1700014944
+c115,user_xi,t1_c110,t3_rt2,"Interesting, do you have a link to the study?",1700015129
+c116,user_delta,t1_c114,t3_rt2,The city announced the schedule on Tuesday,1700015488
+c117,user_mu,t1_c110,t3_rt2,The city announced the schedule on Tuesday,1700015588
+c118,user_omicron,t1_c112,t3_rt2,The city announced the schedule on Tuesday,1700015666
+c119,user_nu,t1_c110,t3_rt2,Health officials recommend checking the official guidance,1700016037
+c120,user_theta,t1_c113,t3_rt2,The city announced the schedule on Tuesday,1700016330
+c121,user_nu,t1_c111,t3_rt2,I read the report and the numbers look different,1700016542
+c122,user_lambda,t1_c115,t3_rt2,"Interesting, do you have a link to the study?",1700016581
+c123,user_lambda,t1_c112,t3_rt2,"Thanks for sharing, I will look into it",1700016971
+c124,user_alpha,t1_c111,t3_rt2,Health officials recommend checking the official guidance,1700017320
+c125,user_kappa,t1_c123,t3_rt2,"Thanks for sharing, I will look into it",1700017407
+c126,user_theta,t1_c110,t3_rt2,"Interesting, do you have a link to the study?",1700017576
+c127,user_beta,t1_c111,t3_rt2,The city announced the schedule on Tuesday,1700017672
+c128,user_xi,t1_c112,t3_rt2,I read the report and the numbers look different,1700017976
+c129,user_rho,t1_c113,t3_rt2,"Thanks for sharing, I will look into it",1700018173
+c130,user_gamma,t1_c110,t3_rt2,I read the report and the numbers look different,1700018555
+c131,user_zeta,t1_c127,t3_rt2,Health officials recommend checking the official guidance,1700018722
+c132,user_alpha,t1_c125,t3_rt2,"Interesting, do you have a link to the study?",1700018794
+c133,user_upsilon,t1_c110,t3_rt2,The city announced the schedule on Tuesday,1700018886
+c134,user_omicron,t1_c112,t3_rt2,"Interesting, do you have a link to the study?",1700019199
+c135,user_xi,t1_c121,t3_rt2,I read the report and the numbers look different,1700019251
+c136,user_rho,t1_c133,t3_rt2,The city announced the schedule on Tuesday,1700019363
+c137,user_iota,t1_c111,t3_rt2,"Interesting, do you have a link to the study?",1700019552
+c138,user_kappa,t1_c128,t3_rt2,"Thanks for sharing, I will look into it",1700019730
+c139,user_omicron,t1_c125,t3_rt2,"Thanks for sharing, I will look into it",1700019898
+c140,user_mu,t1_c139,t3_rt2,"Interesting, do you have a link to the study?",1700019946
+c141,user_alpha,t1_c129,t3_rt2,"Interesting, do you have a link to the study?",1700020258
+c142,user_eta,t1_c118,t3_rt2,"Thanks for sharing, I will look into it",1700020516
+c143,user_delta,t1_c127,t3_rt2,Health officials recommend checking the official guidance,1700020825
+c144,user_nu,t1_c112,t3_rt2,"Thanks for sharing, I will look into it",1700020965
+c145,user_theta,t1_c111,t3_rt2,I read the report and the numbers look different,1700021356
+c146,user_epsilon,t1_c145,t3_rt2,Health officials recommend checking the official guidance,1700021413
+c147,user_epsilon,t1_c110,t3_rt2,"Interesting, do you have a link to the study?",1700021573
+c148,user_xi,t1_c110,t3_rt2,The city announced the schedule on Tuesday,1700021943
+c149,user_nu,t1_c132,t3_rt2,"Thanks for sharing, I will look into it",1700022117
+c150,user_upsilon,t1_c134,t3_rt2,The city announced the schedule on Tuesday,1700022170
+c151,user_omicron,t1_c111,t3_rt2,The city announced the schedule on Tuesday,1700022428
+c152,user_alpha,t1_c117,t3_rt2,I read the report and the numbers look different,1700022626
+c153,user_sigma,t1_c112,t3_rt2,I read the report and the numbers look different,1700022814
+c154,user_eta,t1_c112,t3_rt2,I read the report and the numbers look different,1700023015
+c155,user_nu,t1_c125,t3_rt2,"Interesting, do you have a link to the study?",1700023302
+c156,user_eta,t1_c127,t3_rt2,The city announced the schedule on Tuesday,1700023334
+c157,user_gamma,t1_c146,t3_rt2,I read the report and the numbers look different,1700023437
+c158,user_nu,t1_c110,t3_rt2,"Thanks for sharing, I will look into it",1700023478
+c159,user_kappa,t1_c136,t3_rt2,I read the report and the numbers look different,1700023551
+c160,user_tau,t1_c150,t3_rt2,"Thanks for sharing, I will look into it",1700023660
+c161,user_upsilon,t1_c146,t3_rt2,Health officials recommend checking the official guidance,1700024058
+c162,user_pi,t1_c116,t3_rt2,The city announced the schedule on Tuesday,1700024404
+c163,user_epsilon,t1_c151,t3_rt2,"Interesting, do you have a link to the study?",1700024800
+c164,user_rho,t1_c146,t3_rt2,Health officials recommend checking the official guidance,1700025088
+c165,user_epsilon,t1_c148,t3_rt2,"Thanks for sharing, I will look into it",1700025409
+c166,user_alpha,t1_c152,t3_rt2,"Thanks for sharing, I will look into it",1700025803
+c167,user_theta,t1_c110,t3_rt2,"Interesting, do you have a link to the study?",1700025901
+c168,user_mu,t1_c124,t3_rt2,"Interesting, do you have a link to the study?",1700026162
+c169,user_sigma,t1_c142,t3_rt2,"Interesting, do you have a link to the study?",1700026512
+c170,user_sigma,t1_c133,t3_rt2,The city announced the schedule on Tuesday,1700026543

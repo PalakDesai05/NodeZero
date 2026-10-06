@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pandas
+networkx
+scipy
+scikit-learn
+joblib
+requests
+websockets
+zstandard
+kagglehub
+neo4j
