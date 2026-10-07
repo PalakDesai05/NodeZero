@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+neo4j
+networkx
+numpy
+pandas
+requests
+python-dotenv
+zstandard
+kagglehub
