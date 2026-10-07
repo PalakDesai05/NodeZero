@@ -553,8 +553,11 @@ export default function App() {
     <div className="app">
       <header>
         <div className="brand">
-          <h1>NodeZero</h1>
-          <span className="tagline">Misinformation Cascade Tracker</span>
+          <div className="brand-icon">🕸️</div>
+          <div>
+            <h1>NodeZero</h1>
+            <span className="tagline">Misinformation Cascade Tracker</span>
+          </div>
         </div>
 
         {/* Global Account Search across ALL loaded data */}
