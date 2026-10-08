@@ -536,7 +536,7 @@ export default function App() {
         }
         setMsg(
           res.message +
-            (res.warning ? ` (${res.warning})` : "")
+          (res.warning ? ` (${res.warning})` : "")
         );
       }
       setUrl("");

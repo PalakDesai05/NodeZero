@@ -184,8 +184,7 @@ export default function Graph({
     // Tooltips detailing metrics and misinformation scoring rationale
     node.append("title").text(
       (d) =>
-        `${d.id}\nCommunity: ${d.community}\nBot score: ${d.bot_score}/100${
-          d.flagged ? " [FLAGGED BOT]" : ""
+        `${d.id}\nCommunity: ${d.community}\nBot score: ${d.bot_score}/100${d.flagged ? " [FLAGGED BOT]" : ""
         }\nMisinfo risk: ${Math.round(
           (d.misinfo_score || 0.15) * 100
         )}% (scored via sensationalism +0.25, uppercase shouting +0.20, excessive punctuation +0.15)\nPageRank influence: ${d.influence}`
