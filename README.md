@@ -35,6 +35,9 @@ Each `root_id` becomes one topic. The `subreddit` column drives the community co
 so keep it in your CSV. If the Kaggle files are submissions only (no comments), there are no
 reply edges, so you need a comments dump for the graph to have structure.
 
+## About the Data
+The Reddit dataset in NodeZero is a historical archive originating from Pushshift / Kaggle dumps of `r/politics` on 1 April 2019, comprising 5 discussion threads and 7,826 comments. In contrast, Bluesky (AT Protocol) and Mastodon (ActivityPub) datasets are fetched live from their respective production APIs in real time when you search or provide a URL. None of the fields across any dataset are simulated: all timestamps (UTC), author handles, reply trees, comment bodies, and engagement metrics reflect genuine platform records.
+
 ## Live data
 Paste a post link into "Live fetch" (or `POST /fetch {"url": ...}`):
 - Bluesky: `https://bsky.app/profile/<handle>/post/<id>` (community = handle domain)
@@ -52,6 +55,26 @@ Some Mastodon instances require login to read replies; those will return an erro
 | Live fetch & keyword search | `live.fetch`, `search_live_keywords` across Bluesky & Mastodon, `/fetch`, `/fetch/status` |
 | Background Neo4j sync | `neo4j_loader.trigger_background_sync` in 5,000 UNWIND batches |
 
+## How Bot Detection Works
+
+NodeZero evaluates account automation using a transparent three-rule heuristic scoring system (range 0–100 with a threshold of 60 for flagging):
+
+- **Rule 1: Reply Volume (+40 pts)**: Triggered when an account's reply count in the thread exceeds the 95th percentile baseline of all participants.
+  - *Why chosen*: Automated accounts and bot scripts frequently post at superhuman volumes to flood or dominate conversation cascades.
+- **Rule 2: Digit-Heavy Username (+30 pts)**: Triggered when numeric digits comprise >20% of the account username (exempting decentralized identifiers like DIDs).
+  - *Why chosen*: Bulk-registered automated bot accounts routinely use auto-generated numerical suffixes.
+- **Rule 3: Out/In Reply Topology (+30 pts)**: Triggered when an account has an out/in reply ratio > 3.0 with at least 2 outgoing replies.
+  - *Why chosen*: Broadcast and amplifier bots reply widely to many users without generating reciprocal, two-way conversational engagement.
+
+### Heuristic Classification Label
+Accounts scoring ≥ 60 are designated with the label **"automation-like activity (heuristic)"**. Detections are explicitly probabilistic heuristics and are never described as "proven" bots.
+
+### Honest Limitations
+This heuristic approach cannot detect:
+1. **Modern LLM Bots**: AI-driven accounts utilizing large language models that mimic natural conversational cadences and post at human-like frequencies.
+2. **Low-Activity Sleepers**: Dormant or sleeper accounts that post infrequently to evade volume-based statistical detection.
+3. **Single-Comment Astroturfers**: Coordinated brigading campaigns where individual participating accounts each post only once or twice, evading aggregate per-user thresholds.
+
 ## Scoring & Heuristics Notes
 
 ### Misinformation Risk Score (Credibility Heuristic)
@@ -66,13 +89,6 @@ Misinformation Risk is a quantitative linguistic credibility score evaluated acr
   - **Questionable**: Score between 0.40 and 0.49.
   - **Likely Reliable**: Score < 0.40.
   - An account's score represents the mean average across their sampled comments (defaulting to 0.15 if no text content).
-
-### Bot Likelihood Heuristic
-Account automation score from 0 to 100:
-- **Reply Volume (+40)**: Post count exceeds 95th percentile baseline across the cascade.
-- **Digit-Heavy Username (+30)**: Handle contains > 20% numeric digits (exempting decentralized identifiers like DIDs).
-- **Out/In Reply Topology (+30)**: Out-to-in reply ratio > 3.0 with at least 2 replies sent (broadcasting behavior).
-- **Flagged Threshold**: Score ≥ 60.
 
 ## Rules & Badges Reference
 
