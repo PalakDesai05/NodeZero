@@ -1,0 +1,12 @@
+{
+  "100 runs": ["century", "hundred", "ton"],
+  "century": ["100 runs", "hundred"],
+  "odi": ["one day international", "cricket"],
+  "one day international": ["odi", "cricket"],
+  "odi cricket": ["odi", "cricket", "one day international"],
+  "vpn": ["virtual private network", "proxy"],
+  "nepal flood": ["nepal floods", "kathmandu flood"],
+  "vaccine": ["vaccination", "immunization"],
+  "mueller report": ["robert mueller", "special counsel"],
+  "buttigieg": ["pete buttigieg"]
+}
