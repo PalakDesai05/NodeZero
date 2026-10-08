@@ -104,8 +104,9 @@ def get_cached_analysis(topic, limit=300):
     if mem and mem.get("mtime") == csv_mtime and mem.get("limit") == limit:
         return mem.get("data")
     
+    safe_file_topic = clean_topic.replace(":", "_")
     # Check disk cache (pickle)
-    disk_path = os.path.join(CACHE_DIR, f"{clean_topic}_{limit}.pkl")
+    disk_path = os.path.join(CACHE_DIR, f"{safe_file_topic}_{limit}.pkl")
     if os.path.exists(disk_path):
         try:
             with open(disk_path, "rb") as f:
@@ -124,18 +125,181 @@ def get_cached_analysis(topic, limit=300):
 
 def set_cached_analysis(topic, limit, data):
     clean_topic = topic.replace("t3_", "")
+    safe_file_topic = clean_topic.replace(":", "_")
     csv_mtime = get_csv_mtime()
     MEMORY_ANALYSIS_CACHE[clean_topic] = {
         "mtime": csv_mtime,
         "limit": limit,
         "data": data
     }
-    disk_path = os.path.join(CACHE_DIR, f"{clean_topic}_{limit}.pkl")
+    disk_path = os.path.join(CACHE_DIR, f"{safe_file_topic}_{limit}.pkl")
     try:
         with open(disk_path, "wb") as f:
             pickle.dump({"mtime": csv_mtime, "limit": limit, "data": data}, f)
     except Exception:
         pass
+
+def clear_search_results():
+    global SEARCH_POSTS, SEARCH_METADATA
+    SEARCH_POSTS.clear()
+    SEARCH_METADATA.clear()
+    _save_persisted_store()
+    invalidate_account_index()
+
+def search_reddit(query: str, query_plan: dict = None) -> list[dict]:
+    """
+    Search Reddit CSV full text (case-insensitive, whole words only with regex \b).
+    Rank: exact phrase > all keywords > at least 2 keywords.
+    A single-keyword match is only a "weak match" (for len <= 2 keywords).
+    Never count more than 3 weak matches.
+    Multi-keyword queries with >= 3 keywords require at least 2 keywords to match.
+    """
+    if not has_reddit_csv():
+        return []
+
+    df = load_reddit_df()
+    if df is None or df.empty or "body" not in df.columns:
+        return []
+
+    df["clean_root"] = df["root_id"].str.replace("t3_", "")
+    clean_q = (query or "").strip().lower().replace("#", "")
+    if not clean_q:
+        return []
+
+    import re
+    try:
+        from search_validator import STOPWORDS
+    except ImportError:
+        STOPWORDS = {
+            "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are",
+            "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but",
+            "by", "did", "do", "does", "doing", "down", "during", "each", "few", "for", "from",
+            "had", "has", "have", "having", "he", "her", "here", "him", "his", "how", "i", "if",
+            "in", "into", "is", "it", "its", "me", "more", "most", "my", "no", "nor", "not", "of",
+            "off", "on", "once", "only", "or", "other", "our", "out", "over", "own", "same", "she",
+            "so", "some", "such", "than", "that", "the", "their", "theirs", "them", "then", "there",
+            "these", "they", "this", "those", "through", "to", "too", "under", "until", "up", "very",
+            "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom", "why",
+            "will", "with", "you", "your", "yours", "ke", "ka", "ki", "hai", "ko", "se", "ne"
+        }
+
+    if query_plan and query_plan.get("keywords"):
+        raw_kws = query_plan["keywords"]
+    else:
+        raw_kws = re.findall(r"\b\w+\b", clean_q)
+
+    # Drop English & Hindi/Hinglish stopwords and single-letter characters
+    keywords = [
+        k.lower().strip() for k in raw_kws
+        if k.lower().strip() not in STOPWORDS and len(k.strip()) >= 2
+    ]
+    # Deduplicate while preserving order
+    dedup_kws = []
+    for k in keywords:
+        if k not in dedup_kws:
+            dedup_kws.append(k)
+    keywords = dedup_kws
+    total_keywords = len(keywords)
+
+    # Whole-word regex pattern for exact phrase
+    phrase_pattern = r"\b" + re.escape(clean_q) + r"\b"
+
+    results = []
+    for root_id, group in df.groupby("clean_root"):
+        # 1. Exact phrase match with \b
+        phrase_mask = group["body"].str.contains(phrase_pattern, case=False, na=False, regex=True)
+        has_exact_phrase = bool(phrase_mask.any())
+        phrase_matches = int(phrase_mask.sum())
+
+        # 2. Whole word matches for each keyword
+        matched_kws = []
+        matching_rows = []
+        if has_exact_phrase:
+            matching_rows = group[phrase_mask]
+
+        total_kw_matches = 0
+        for kw in keywords:
+            kw_pattern = r"\b" + re.escape(kw) + r"\b"
+            kw_mask = group["body"].str.contains(kw_pattern, case=False, na=False, regex=True)
+            kw_count = int(kw_mask.sum())
+            if kw_count > 0:
+                matched_kws.append(kw)
+                total_kw_matches += kw_count
+                if len(matching_rows) == 0:
+                    matching_rows = group[kw_mask]
+
+        num_matched = len(matched_kws)
+
+        # Classify match quality:
+        # Tier 1: Exact phrase
+        # Tier 2: All keywords
+        # Tier 3: At least 2 keywords (Partial: X of Y)
+        # Tier 4: Weak match (1 keyword)
+        if has_exact_phrase:
+            quality_tier = 1
+            quality_label = "[Exact phrase]"
+            is_match = True
+        elif total_keywords > 0 and num_matched == total_keywords:
+            quality_tier = 2
+            quality_label = "[All keywords]"
+            is_match = True
+        elif num_matched >= 2:
+            quality_tier = 3
+            quality_label = f"[Partial: {num_matched} of {total_keywords}]"
+            is_match = True
+        elif num_matched == 1:
+            # Multi-keyword queries with >= 3 keywords require at least 2 keywords to match
+            # "khatron ke khiladi winner" has 3 keywords and matches only 1 -> returns 0
+            if total_keywords >= 3:
+                is_match = False
+            else:
+                quality_tier = 4
+                quality_label = "[Weak: 1 keyword]"
+                is_match = True
+        else:
+            is_match = False
+
+        if not is_match:
+            continue
+
+        best_snippet = "Reddit discussion thread"
+        if len(matching_rows) > 0:
+            first_match_body = matching_rows.iloc[0]["body"] or ""
+            clean_snippet = " ".join(first_match_body.strip().split())
+            if clean_snippet:
+                best_snippet = clean_snippet[:50]
+
+        thread_posts = load(str(root_id)) or []
+        replies_count = max(0, len(thread_posts) - 1)
+        label = f"{quality_label} {best_snippet} - Reddit (2019) - {replies_count} replies"
+
+        relevance = (100 if quality_tier == 1 else 70 if quality_tier == 2 else 40 if quality_tier == 3 else 10) + (phrase_matches * 5) + total_kw_matches
+
+        results.append({
+            "topic": str(root_id),
+            "platform": "Reddit (2019)",
+            "rows": thread_posts,
+            "first_50": best_snippet,
+            "replies_count": replies_count,
+            "quality_tier": quality_tier,
+            "quality_label": quality_label,
+            "relevance": relevance,
+            "label": label,
+            "posts_count": len(thread_posts)
+        })
+
+    # Separate strong matches and weak matches
+    strong_results = [r for r in results if r["quality_tier"] < 4]
+    weak_results = [r for r in results if r["quality_tier"] == 4]
+
+    # Never count more than 3 weak matches
+    weak_results.sort(key=lambda x: (x["quality_tier"], -x["replies_count"]))
+    weak_results = weak_results[:3]
+
+    combined = strong_results + weak_results
+    # Sort by match quality first (quality_tier 1 > 2 > 3 > 4), then by replies (descending)
+    combined.sort(key=lambda x: (x["quality_tier"], -x["replies_count"]))
+    return combined
 
 def topics():
     """
@@ -176,14 +340,25 @@ def topics():
     for t, posts in SEARCH_POSTS.items():
         meta = SEARCH_METADATA.get(t, {})
         plat = meta.get("platform") or (posts[0].get("platform", "live") if posts else "live")
-        label = meta.get("label") or f"{t[:50]} - {plat} - {len(posts)} replies"
+        q_label = meta.get("quality_label", "")
+        label = meta.get("label") or f"{q_label} {t[:50]} - {plat} - {len(posts)} replies".strip()
+        relevance = meta.get("relevance", 0)
+        replies = meta.get("replies", max(0, len(posts) - 1))
+        q_tier = meta.get("quality_tier", 4)
         search_threads.append({
             "topic": t,
             "platform": plat,
             "comments": len(posts),
             "posts": len(posts),
-            "label": label
+            "label": label,
+            "quality_tier": q_tier,
+            "quality_label": q_label,
+            "relevance": relevance,
+            "replies": replies
         })
+
+    # Sort by match quality first (quality_tier 1 < 2 < 3 < 4), then by reply count (descending)
+    search_threads.sort(key=lambda x: (x.get("quality_tier", 4), -x.get("replies", 0)))
 
     return {
         "reddit": reddit_threads,

@@ -38,6 +38,14 @@ class Neo4jConnector:
             logger.warning(f"Failed to create Neo4j driver: {e}")
             return None
 
+    def close(self):
+        if self._driver is not None:
+            try:
+                self._driver.close()
+            except Exception:
+                pass
+            self._driver = None
+
     def execute_with_retry(self, operation):
         """
         Executes an operation function with a single retry if ServiceUnavailable
@@ -201,6 +209,9 @@ class Neo4jConnector:
 
 
 neo4j_client = Neo4jConnector()
+
+def close():
+    neo4j_client.close()
 
 def get_status():
     return neo4j_client.verify_status()

@@ -1,11 +1,25 @@
 #!/usr/bin/env python3
-from starlette.testclient import TestClient
+import os
+import sys
+
+backend_dir = os.path.dirname(os.path.abspath(__file__))
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
+
+from fastapi.testclient import TestClient
 from main import app
 
 client = TestClient(app)
 
 def test_endpoints():
     print("Testing FastAPI Endpoints...")
+
+    # 0. Test root and health endpoints
+    r_root = client.get('/')
+    assert r_root.status_code == 200, f"root failed: {r_root.status_code}"
+    r_health = client.get('/health')
+    assert r_health.status_code == 200, f"health failed: {r_health.status_code}"
+    print("[OK] GET / and GET /health returned 200")
 
     # 1. Test topics
     r = client.get('/topics')
@@ -46,6 +60,12 @@ def test_endpoints():
     r_top = client.get('/neo4j/top-replied')
     assert r_top.status_code == 200
     print("[OK] GET /neo4j/top-replied passed")
+
+    # 6. Test neo4j status
+    r_status = client.get('/neo4j/status')
+    assert r_status.status_code == 200
+    assert "connected" in r_status.json()
+    print(f"[OK] GET /neo4j/status connected={r_status.json().get('connected')}")
 
     print("\nALL FASTAPI ENDPOINT TESTS PASSED SUCCESSFULLY!")
 
